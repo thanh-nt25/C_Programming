@@ -51,9 +51,12 @@ int nb_nodes(node_type *root){
 
 int treeNbrLeaf(node_type *root){
     if(root == NULL) return 0;
-    if(IsLeaf(root))
-        return 1;
+    if(IsLeaf(root)) return 1;
     return treeNbrLeaf(RightChild(root))+treeNbrLeaf(LeftChild(root));
+}
+
+int treeInternalNode(node_type *root){
+    return nb_nodes(root)-treeNbrLeaf(root);
 }
 
 void preOrder(node_type *root){
@@ -95,6 +98,7 @@ int main(void){
     printf("Node %d is leaf or not: %d\n", RightChild(root)->element, IsLeaf(RightChild(root)));
     printf("Number of node is: %d\n", nb_nodes(root));
     printf("Number of leaf is: %d\n", treeNbrLeaf(root));
+    printf("Number of internal nodes is: %d\n", treeInternalNode(root));
     return 0;
 }
 
