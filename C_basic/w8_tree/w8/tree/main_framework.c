@@ -24,6 +24,7 @@ typedef struct nodeType *treetype;
 /*================ functions =================*/
 
 void makeNullTree(treetype *T) { (*T) = NULL; }
+
 int isEmptyTree(treetype T) { return T == NULL; }
 
 treetype LeftChild(treetype n) {
@@ -155,7 +156,7 @@ int main() {
   printf("So nut la: %d\n", nb_nodes(RightChild(tr)));
   printf("Tree Height: %d\n", treeHeight(tr));
   printf("So la: %d\n", treeNbrLeaf(tr));
-  printf("# internal node: %d\n", treeInternalNode(tr));
+  // printf("# internal node: %d\n", treeInternalNode(tr));
   printf("# right children: %d\n", treeNbrRightChildren(tr));
 
   free(tr);
