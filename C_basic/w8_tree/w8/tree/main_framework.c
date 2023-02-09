@@ -124,10 +124,10 @@ int treeHeight(treetype t) {
   return maxHeight;
 }
 int treeNbrLeaf(treetype t) {
-  // your code here
+  // your code here (da code)
 }
 int treeInternalNode(treetype t) { 
-  // your code here 
+  // your code here (da code)
 }
 
 int treeNbrRightChildren(treetype t) {
