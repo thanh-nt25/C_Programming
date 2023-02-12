@@ -59,6 +59,16 @@ int treeInternalNode(node_type *root){
     return nb_nodes(root)-treeNbrLeaf(root);
 }
 
+int heightOftree(node_type *root){
+    if ( root == NULL ) return 0;
+    int leftheight = heightOftree(root->left);
+    int rightheight = heightOftree(root->right);
+    if(leftheight > rightheight)
+        return leftheight + 1;
+    else    
+        return rightheight + 1;
+}
+
 void preOrder(node_type *root){
     if (root == NULL) return;
     printf("%d \t", root -> element);
@@ -99,6 +109,7 @@ int main(void){
     printf("Number of node is: %d\n", nb_nodes(root));
     printf("Number of leaf is: %d\n", treeNbrLeaf(root));
     printf("Number of internal nodes is: %d\n", treeInternalNode(root));
+    printf("Height if tree is: %d\n", heightOftree(root));
     return 0;
 }
 
