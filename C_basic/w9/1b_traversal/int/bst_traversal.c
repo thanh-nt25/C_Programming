@@ -27,6 +27,8 @@ void preOrderPrint(tree_t tree) {
   }
 }
 
+// DFS
+// use stack
 void iter_inorder(tree_t tree) {
   stack_t stack;
   stack_initialize(&stack);
@@ -43,6 +45,8 @@ void iter_inorder(tree_t tree) {
   }
 }
 
+// BFS
+// use Queue
 void breadth_first(tree_t node) {
   Queue queue;      // queue of tree
   

@@ -9,7 +9,8 @@
 #include "../bst_traversal.h"
 
 int main() {
-  int arr[] = {6,5,4,3,2,1,7,8,9,0};
+  int arr[10] = {6,5,4,3,2,1,7,8,9,0};
+
   tree_t tree = NULL;
   for (int i = 0; i < sizeof(arr)/sizeof(arr[0]); i++) 
     insertNode(arr[i], &tree);

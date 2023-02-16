@@ -2,14 +2,9 @@
 #include <string.h>
 #include <stdlib.h>
 
-typedef int elmType;
+#include "BST.h"
 
-typedef struct nodeType{
-    elmType key;
-    struct nodeType *left, *right;
-}   node_type;
-
-typedef node_type *root;
+// typedef node_type *root;
 
 node_type *createNode(elmType data){
     node_type *newNode = (node_type *)malloc(sizeof(node_type));
@@ -20,39 +15,31 @@ node_type *createNode(elmType data){
     return newNode;
 }
 
-void *insertNode(root root, elmType newData){
-    if (root == NULL) {
-        return createNode(newData);
+// void *insertNode(node_type* root, elmType newData){
+//     if (root == NULL) {
+//         return createNode(newData);
+//     }
+//     if (root -> key < newData){
+//         root -> right = insertNode(root -> right, newData);
+//     }
+//     else if(root -> key > newData){
+//         root->left = insertNode(root -> left, newData);
+//     }
+//     return root;
+// }
+
+void *insertNode(node_type *root, elmType newData){
+    node_type *newnode = createNode(newData);
+    if (newnode == NULL) return NULL;
+    if (root == NULL) return newnode;
+    if (root->key > newData){
+        root->left = insertNode(root->left, newData);
     }
-    if (root -> key < newData){
-        insertNode(root -> right, newData);
+    if (root->key < newData){
+        root->right = insertNode(root->right, newData);
     }
-    else if(root -> key > newData){
-        insertNode(root -> left, newData);
-    }
+    return root;
 }
 
-void inOrder(node_type *root){
-    if (root != NULL){
-    inOrder(root -> left);
-    printf("%d \t", root -> key);
-    inOrder(root -> right);
-    }
-}
 
-int main(void){
-    // node_type *root = NULL;
-    // init_tree(root);
-    root tree = NULL;
 
-    insertNode(tree, 50);
-    insertNode(tree, 30);
-    insertNode(tree, 20);
-    insertNode(tree, 40);
-    insertNode(tree, 70);
-    insertNode(tree, 60);
-    insertNode(tree, 80);
-    inOrder(tree);
-    printf("\n");
-    return 0;
-}   
