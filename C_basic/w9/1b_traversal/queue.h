@@ -8,6 +8,8 @@
 
 // typedef tree_t ElementType;
 typedef void* ElementType;
+// dinh nghia lai elementType la con tro co moi kieu 
+// du lieu khac nhau
 
 typedef struct { 
    ElementType Elements[MAX_LENGTH];  //Store the elements 

@@ -16,22 +16,22 @@ int main() {
   }
 
   init_table(ht);
-  // for (int i = 0; i < sizeof(keys) / sizeof(keys[0]); i++) {
-  //   element_t e;
-  //   strcpy(e.key, keys[i]);
-  //   strcpy(e.word, keys[i]);
-  //   insertItem(ht, e);
-  // }
+  for (int i = 0; i < sizeof(keys) / sizeof(keys[0]); i++) {
+    element_t e;
+    strcpy(e.key, keys[i]);
+    strcpy(e.word, keys[i]);
+    insertItem(ht, e);
+  }
 
-  element_t f;
-  strcpy(f.key,keys[3]);
-  strcpy(f.word,keys[3]);
-  insertItem(ht, f);
+  // element_t f;
+  // strcpy(f.key,keys[3]);
+  // strcpy(f.word,keys[3]);
+  // insertItem(ht, f);
 
-  element_t e;
-  strcpy(e.key,keys[0]);
-  strcpy(e.word,keys[0]);
-  insertItem(ht, e);
+  // element_t e;
+  // strcpy(e.key,keys[0]);
+  // strcpy(e.word,keys[0]);
+  // insertItem(ht, e);
 
   printf("Traverse:\n");
   traverse(ht);

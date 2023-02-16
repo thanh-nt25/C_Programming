@@ -14,7 +14,8 @@ void EnQueue(ElementType X, Queue *pQ) {
     if (Empty_Queue(*pQ)) pQ->Front = 0;
     pQ->Rear = (pQ->Rear + 1) % MAX_LENGTH;
     pQ->Elements[pQ->Rear] = X;
-  } else
+  }
+  else
     printf("Queue is full!");
 }
 
@@ -27,7 +28,8 @@ ElementType DeQueue(Queue *pQ) {
       pQ->Front = (pQ->Front + 1) % MAX_LENGTH;
 
     return retVal;
-  } else {
+  } 
+  else {
     printf("Queue is empty!");
     exit(-1);
   }

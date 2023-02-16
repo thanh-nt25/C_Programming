@@ -1,3 +1,5 @@
+// Framework for Binary Tree
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -7,6 +9,8 @@ typedef struct nodeType{
     elmType element;
     struct nodeType *left, *right;
 }   node_type;
+
+/* =========== Function =============*/
 
 int isEmpty(node_type *root){ return root == NULL; } 
 // 1 (true) if tree is empty, == 0 (false) if tree not empty
@@ -69,6 +73,30 @@ int heightOftree(node_type *root){
         return rightheight + 1;
 }
 
+// Add to the most right child
+node_type *AddLeft(node_type *root, elmType newData){
+    node_type *newnode = createNode(newData);
+    if (root == NULL) return newnode;
+    if ((root -> left) == NULL) return root -> left = newnode;
+    node_type *q = NULL;
+    for (q = root; q->left != NULL; q = q -> left);
+    q -> left = newnode;
+    return root;
+}
+
+node_type *AddRight(node_type *root, elmType newData){
+    node_type *newnode = createNode(newData);
+    if (root == NULL) return newnode;
+    if ((root -> right) == NULL) return root -> right = newnode;
+    node_type *q = NULL;
+    for (q = root; q->right != NULL; q = q -> right);
+    q -> right = newnode;
+    return root;
+}
+
+
+/* ========= Traversal ========== */
+
 void preOrder(node_type *root){
     if (root == NULL) return;
     printf("%d \t", root -> element);
@@ -90,6 +118,8 @@ void postOrder(node_type *root){
     printf("%d \t", root->element);
 }
 
+/* ============ Main ===============*/
+
 int main(void){
     node_type *root = createNode(1);
     root -> left  = createNode(2);
@@ -110,6 +140,10 @@ int main(void){
     printf("Number of leaf is: %d\n", treeNbrLeaf(root));
     printf("Number of internal nodes is: %d\n", treeInternalNode(root));
     printf("Height if tree is: %d\n", heightOftree(root));
+    AddLeft(root, 6);
+    printf("Tree after add the most left child:\n");
+    inOrder(root);  printf("\n");
+
     return 0;
 }
 
