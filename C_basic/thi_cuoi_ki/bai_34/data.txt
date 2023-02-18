@@ -1,0 +1,6 @@
+school	truong hoc
+dog	con cho
+house	ngoi nha
+bag	cai tui
+I	toi
+seven	7

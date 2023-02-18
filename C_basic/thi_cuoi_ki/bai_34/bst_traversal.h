@@ -1,8 +1,8 @@
 #ifndef __BST_TRAVERSAL_H__
 #define __BST_TRAVERSAL_H__
 
-#include "../stack.h"
-#include "../queue.h"
+// #include "../stack.h"
+// #include "../queue.h"
 #include "bst.h"
 
 void inOrderPrint(tree_t tree);

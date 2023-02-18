@@ -11,6 +11,8 @@ typedef struct nodeType{
     struct nodeType *left, *right;
 }   node_type;
 
+// typedef node_type *tree_t;
+
 node_type *createNode(elmType data);
 void *insertNode(node_type *root, elmType newData);
 

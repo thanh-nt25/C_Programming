@@ -5,7 +5,7 @@
 // BST: Bin Search Tree
 #include "bst.h"
 
-tree_t search(keyT x, tree_t root) {
+tree_t search(keyT x, tree_t root) { 
   keyT* k = &(root->data);  // <===
   if (root == NULL)
     return NULL;    // not found
@@ -71,7 +71,7 @@ void prettyPrint(tree_t tree) {
         strcat(prefix, "     ");
       } else {
         printf("\302");
-        strcat(prefix, "\263    ");
+        strcat(prefix, "\263    "); 
       }
     prettyPrint(tree->left);
     *prefixend = '\0';

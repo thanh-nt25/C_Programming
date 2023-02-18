@@ -15,7 +15,7 @@ typedef node_t *tree_t;
 // --- BST --------------------------------------------------------------------
 
 tree_t search(keyT x, tree_t root);
-void insertNode(data_t x, tree_t *pRoot);
+void insertNode(data_t x, tree_t *pRoot); 
 data_t deleteMin(tree_t *pRoot);
 void deleteNode(keyT x, tree_t *pRoot);
 void prettyPrint(tree_t tree);
