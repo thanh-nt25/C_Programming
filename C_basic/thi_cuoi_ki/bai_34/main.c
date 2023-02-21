@@ -127,7 +127,7 @@ void translate(tree_t tree, char sen[]){
             for (int i = 0; i < WORD_COUNT; i++) {
                 printf("%d. %s\n", i+1, to_single_lowcase(words[i]));
             }
-            
+
             printf("Translate:\n");
             for (int i=0; i< WORD_COUNT; ++i){
                 if (search(words[i], tree) == NULL){
@@ -169,7 +169,9 @@ int main(void){
             printf("Enter the sentence:\n");
             // fflush(stdin);
             // fgets(sen, sizeof(sen), stdin);
+            printf("fuck\n");
             scanf("%[^\n]%*c", sen);
+            printf("you\n");
             translate(tree, sen);
             break;
         case 4:
