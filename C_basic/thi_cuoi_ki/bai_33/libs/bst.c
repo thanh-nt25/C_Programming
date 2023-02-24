@@ -28,9 +28,9 @@ void insertNode(data_t x, tree_t *pRoot) {
     (*pRoot)->data = x;  // <===
     (*pRoot)->left = NULL;
     (*pRoot)->right = NULL;
-  } else if (lt(x.Eng, &((*pRoot)->data)))  // <===
+  } else if (lt(x.words, &((*pRoot)->data)))  // <===
     insertNode(x, &((*pRoot)->left));
-  else if (gt(x.Eng, &((*pRoot)->data)))  // <===
+  else if (gt(x.words, &((*pRoot)->data)))  // <===
     insertNode(x, &((*pRoot)->right));
 }
 

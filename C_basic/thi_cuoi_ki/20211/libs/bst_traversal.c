@@ -27,6 +27,7 @@ void preOrderPrint(tree_t tree) {
   }
 }
 
+// DFS
 void iter_inorder(tree_t tree) {
   stack_t stack;
   stack_initialize(&stack);

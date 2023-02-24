@@ -1,11 +1,18 @@
 #ifndef __DATA_T_H__
 #define __DATA_T_H__
 
-typedef int data_t;
-typedef int keyT;  // to find
+typedef struct word_s{
+    char words[21];
+}   word_t;
+
+// typedef int data_t;
+typedef word_t data_t;
+// typedef int keyT;  // to find
+typedef char* keyT;
 
 void showData(data_t data);
-data_t convert(int number);
+// data_t convert(int number);
+data_t convert(char *word);
 
 int eq(const keyT key, const data_t* dat);
 // less than

@@ -70,6 +70,7 @@ void menuPrint(){
     printf("2. Print Binary Search Tree sort by End alphabet\n");
     printf("3. Translate\n");
     printf("4. Exit\n");
+    printf("5. Config data file\n");
     printf("==========================\n");
 }
 
@@ -141,6 +142,17 @@ void translate(tree_t tree, char sen[]){
             free(words);
 }
 
+void config_file(FILE *fp){
+    if ((fp = fopen("data.txt", "a+")) == NULL) printf("Cannot open\n");
+    char *eng, *viet;
+    printf("file 5\n");
+    scanf("%s", eng);
+    fflush(stdin);
+    fgets(viet, sizeof(viet), stdin);
+    fprintf(fp, "%s %s", eng, viet);
+    fclose(fp);
+}
+
 /* ============ Main ==============*/ 
 
 int main(void){
@@ -169,12 +181,14 @@ int main(void){
             printf("Enter the sentence:\n");
             // fflush(stdin);
             // fgets(sen, sizeof(sen), stdin);
-            printf("fuck\n");
-            scanf("%[^\n]%*c", sen);
-            printf("you\n");
+            // scanf("%*[^\n]%*c", sen);
+            scanf("%*[^\n]%*c", sen);
             translate(tree, sen);
             break;
         case 4:
+            break;
+        case 5:
+            config_file(fp);
             break;
         }
     }   while (choice != 4);
