@@ -17,7 +17,7 @@ int main(void){
     FILE *fp = NULL;
     char file_data[] = "data.txt";
     if ((fp = fopen(file_data, "r")) == NULL) printf("Error\n");
-
+ 
     int N; //so co phieu
     fscanf(fp, "%d", &N); // doc lay key
     int NumSt = Days * N;
