@@ -1,12 +1,5 @@
-school	truong hoc
-dog	con cho
-house	ngoi nha
-bag	cai tui
 i toi
-seven	7
-cafe    quan cafe
-market  cho
-cat con meo
-go di
-to den
+school  truong hoc
 and va
+go  den
+to  toi
