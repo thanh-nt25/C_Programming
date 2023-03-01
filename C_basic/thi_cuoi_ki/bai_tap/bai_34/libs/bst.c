@@ -22,7 +22,7 @@ tree_t search(keyT x, tree_t root) {
 void insertNode(data_t x, tree_t *pRoot) {
   if (*pRoot == NULL) {
     *pRoot = (node_t *)malloc(sizeof(node_t));
-    (*pRoot)->data = x;
+    (*pRoot)->data = x;  // <===
     (*pRoot)->left = NULL;
     (*pRoot)->right = NULL;
   } else if (lt(x.Eng, &((*pRoot)->data)))  // THAY ĐỔI TRƯỜNG SO SÁNH
@@ -31,7 +31,7 @@ void insertNode(data_t x, tree_t *pRoot) {
     insertNode(x, &((*pRoot)->right));
 }
 
-// xóa phần tử có key nhỏ nhất
+// Find the left-most node of right sub tree
 data_t deleteMin(tree_t *root) {
   if ((*root)->left == NULL) {
     data_t k = (*root)->data;
@@ -41,7 +41,7 @@ data_t deleteMin(tree_t *root) {
     return deleteMin(&(*root)->left);
 }
 
-// xóa node theo key
+// Delete a node from a BST
 void deleteNode(keyT x, tree_t *root) {
   if (*root != NULL)
     if (lt(x, &((*root)->data)))

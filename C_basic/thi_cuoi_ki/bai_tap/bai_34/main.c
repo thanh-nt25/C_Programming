@@ -4,10 +4,9 @@
 #include <ctype.h>
 #include "libs/bst_traversal.h"
 
-#define OPTIONS 6 // CHỈNH SỬA OPTIONS
-#define NUM_LINE 10 // SỐ TRƯỜNG THỰC THỂ DỮ LIỆU
-
-#define MAX_WORDS 20 // DÙNG CHO HÀM TÁCH CHUỖI
+#define OPTIONS 5 // CHỈNH SỬA OPTIONS
+#define NUM_LINE 20
+#define MAX_WORDS 30
 
 /* ===============================================================*/
 /* ======================= Tiền xử lí ===========================*/
@@ -63,7 +62,7 @@ char* to_single_upcase(char *word){
 // char *words = split_sentence(sen);
 char **split_sentence(char *sentence) {
     // con tro luu dia chi cua con tro den chuoi can modi =)))
-    char **words = malloc(MAX_WORDS * sizeof(char*)); 
+    char **words = malloc(MAX_WORDS * sizeof(char*));
     int i = 0;
 
     char *word = strtok(sentence, " ");
@@ -90,12 +89,11 @@ str[strcspn(str, "\n")] = '\0';
 
 void menuPrint(){
     printf("==========================\n");
-    printf("1. \n");
-    printf("2. \n");
-    printf("3. \n");
-    printf("4. \n");
-    printf("5. \n");
-    printf("6. Exit\n");
+    printf("1. Read file Data and move data to Binary Search Tree (arrange by End alphabet)\n");
+    printf("2. Print Binary Search Tree sort by End alphabet\n");
+    printf("3. Translate\n");
+    printf("4. Config data file\n");
+    printf("5. Exit\n");
     printf("==========================\n");
 }
 
@@ -115,32 +113,53 @@ int check_choice(){
 /* ===================== Các hàm trong Menu ==========================*/ 
 /* ==================================================================*/
 
-void mot_(){
-    printf("1st function\n");
-    // chuyển dữ liệu => data structure => BST
-    // YOUR CODE
+void mot_ReadFile(FILE *fp, char *file_open, tree_t *tree, data_t *trans, int *REAL_LINE){
+    // truyen du lieu vao trans
+    for(int i=0; i < *REAL_LINE; ++i){
+        fscanf(fp,"%s", trans[i].Eng);
+        fgetc(fp);
+        fgets(trans[i].Viet, sizeof(trans[i].Viet), fp);
+        reWrite(trans[i].Viet);
+    }
+
+    // truyen du lieu vao BST
+    for(int i=0; i < *REAL_LINE; ++i){
+        insertNode(trans[i], tree);
+    }
+    printf("Real line is: %d\n", REAL_LINE);
+}
+
+void hai_Print_BST(tree_t tree){
+    printf("Dictionary from data file:\n\n");
+    iter_inorder(tree);
 
 }
 
-void hai_(){
-    printf("2nd function\n");
-    // YOUR CODE
+void ba_translate(tree_t tree, char sen[]){
+            printf("Original Sentence: \"%s\"\n", sen);
+            int WORD_COUNT = word_count(sen);
+            printf("Number of word is: %d\n", WORD_COUNT);
+            
+            char **words = split_sentence(sen);
+            
+            printf("All single words of sen:\n");
+            for (int i = 0; i < WORD_COUNT; i++) {
+                printf("%d. \"%s\"\n", i+1, to_single_lowcase(words[i]));
+            }
+
+            printf("Translate:\n\"");
+            for (int i=0; i< WORD_COUNT; ++i){
+                // printf("%s", tree->data.Viet);
+                printf("%s ", search(to_single_lowcase(words[i]), tree)->data.Viet);
+            }
+            printf("\"");
+            free(words);
 }
 
-void ba_(){
-    printf("3rd function\n");
-    // YOUR CODE
+void bon_config_file(){
+    printf("option 5\n");
 }
 
-void bon_(){
-    printf("4st function\n");
-    // YOUR CODE
-}
-
-void nam_(){
-    printf("5st function\n");
-    // YOUR CODE
-}
 
 /* ===============================================================*/
 /* ============================ Main =============================*/ 
@@ -156,6 +175,9 @@ int main(void){
     
     if ((fp = fopen(file_open, "r")) == NULL) printf("Cannot open!\n");
     
+    int REAL_LINE = 0;
+    REAL_LINE = count_line(fp, file_open);
+
 
     int choice = 0;
     do{
@@ -163,21 +185,19 @@ int main(void){
         switch (choice)
         {
         case 1:
-            mot_();
+            mot_ReadFile(fp, file_open, &tree, trans, &REAL_LINE);
             break;
         case 2:
-            hai_();
+            hai_Print_BST(tree);
             break;
         case 3:
-            ba_();
+            char sen[MAX_WORDS] = "I go to school";
+            ba_translate(tree, sen);
             break;
         case 4:
-            bon_();
+            bon_config_file();
             break;
         case 5:
-            nam_();
-            break;
-        case 6:
             break;
         }
     }   while (choice != OPTIONS);
