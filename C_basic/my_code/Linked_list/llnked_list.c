@@ -53,7 +53,7 @@ root_t llInsertHead(root_t root, const data_t data){
     return newnode;
 }
 
-root_t llInsertStudent(root_t root, const data_t data){
+root_t llInsertStudent(root_t root, const data_t data){ // co sap xep
     node_t *curr_std, *prev_std = NULL;
 
     node_t *newnode = (node_t *)malloc(sizeof(node_t));

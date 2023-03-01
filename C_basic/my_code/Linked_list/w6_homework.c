@@ -92,12 +92,7 @@ root_t llInsertHead(root_t root, const data_t data)
 // nhan tham so dau vao la root va thong tin sv moi
 root_t llInsertStudent(root_t root, const data_t data){
     node_t *curr_std, *prev_std = NULL;
-
-    node_t *newnode = (node_t *)malloc(sizeof(node_t));
-    if(root == NULL) return newnode;
-    newnode -> data = data;
-    newnode -> next = NULL;
-
+    node_t *newnode = CreateNewNode(data);
 
     if ((newnode ->data).grade > (root -> data).grade)
         {

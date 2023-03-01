@@ -4,7 +4,7 @@
 
 // THAY ĐỔI IN DỮ LIỆU
 void showData(data_t data) {
-  printf("%s - %s\n", data.Eng, data.Viet);
+  // printf("%s - %s\n", data.Eng, data.Viet);
 }
 // data_t convert(int number) { return number; }
 // THAY ĐỔI THEO CẤU TRÚC DỮ LIỆU
