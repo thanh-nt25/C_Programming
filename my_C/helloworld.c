@@ -2,49 +2,55 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define MAX_WORDS 30
+typedef struct Node{
 
-int word_count(char *sen){
-    int count=0;
-    for (int i=0; sen[i] != '\0'; ++i){
-        if (sen[i] == ' ' || sen[i] == '\n') count++;
-    }
-    count++;
-    return count;
+int id; // id cua nut
+
+struct Node* next; // con tro tro den nut tiep theo
+
+}Node;
+
+// Hỏi hàm proc sau đây thực hiện công việc gì?
+
+Node *createNode(int id){
+    Node *newNode = (Node *)malloc(sizeof(Node));
+    newNode -> id = id;
+    newNode -> next = NULL;
+    return newNode;
 }
 
-
-// tra lai mot chuoi khac da duoc phan tach tu chuoi ban dau
-void split_sentence(char *str, int NbrWords){
-    char *words = str; // de ko tac dong truc tiep vao chuoi ban dau
-    char *p = strtok(words, " ");
-    printf("%s\n", p);
-    int i = 0;
-    while(p != NULL && i < NbrWords){
-        p = strtok(NULL, " ");
-        if(p != NULL) printf("%s\n", p);
-        ++i;
+void insertTail(Node *root, int id){
+    Node *newnode = createNode(id);
+    if ( root == NULL) {
+        root = newnode;
+        return;
     }
+    Node *q = root;
+    for (int i=0; q->next != NULL; ++i ){
+        q = q->next;
+    }
+    q -> next = newnode;
+}
+
+Node* proc(Node* f, int v){
+
+    if(f==NULL) return NULL;
+
+    if(f->id == v){
+
+        Node* tm = f; f = f->next; free(tm); return f;
+
+    }
+
+    f->next = proc(f->next,v);
+
+    return f;
+
 }
 
 int main(void){
-    // char *str = malloc(sizeof(char) * MAX_WORDS);
-    char *str;
-    // char str[20];
-    scanf("%[^\n]%*c", str);    
-    // fflush(stdin);
-    // fgets(str, sizeof(str), stdin);
-    // str[strcspn(str, "\n")] = '\0';
-
-    int NbrWords = word_count(str);
-    printf("Number of word is: %d\n", NbrWords);
-
-    // char *p = strtok(str, " ");
-    // printf("%s\n", p);
-    // while (p != NULL){
-    //     p = strtok(NULL, " ");
-    //     if(p != NULL) printf("%s\n", p);
-    // }
-    split_sentence(str, NbrWords);
+    Node* root = NULL;
+    insertTail(root, 20);
+    printf("%d\n", root->id);
     return 0;
 }

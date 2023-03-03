@@ -2,18 +2,27 @@
 #define __DATA_T_H__
 
 // ĐỔI CẤU TRÚC BỘ DỮ LIỆU + TÊN
-typedef struct word_s{
-    char Eng[21];
-    char Viet[21];
-}   word_t;
+typedef struct car_s{
+    char bien_so[13];
+    struct time{
+        int hh;
+        int mm;
+        int ss;
+        int DD;
+        int MM;
+        int YYYY;
+    }time;
+    int take_io;
+}   car_t;
 
-typedef word_t data_t;
+typedef car_t data_t;
 
 // typedef int keyT;  // to find
 // THAY ĐỔI KEY DÙNG ĐỂ SO SÁNH
 typedef char* keyT;
 
-void showData(data_t data);
+void showData(data_t trans);
+void showData_3(data_t trans);
 // data_t convert(int number);
 data_t convert(char *End, char *Viet);
 

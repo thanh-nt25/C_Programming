@@ -11,5 +11,6 @@ void preOrderPrint(tree_t tree);
 void iter_inorder(tree_t node);
 
 void breadth_first(tree_t node);
+void find_iter_inorder(tree_t tree, char bien_so[]);
 
 #endif

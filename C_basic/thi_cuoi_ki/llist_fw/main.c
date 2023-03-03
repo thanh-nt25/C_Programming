@@ -6,7 +6,7 @@
 #include "libs/llist.h"
 
 #define OPTIONS 6
-#define NUM_STD 10 // SỐ TRƯỜNG THỰC THỂ DỮ LIỆU
+#define NUM_STD 1000 // SỐ TRƯỜNG THỰC THỂ DỮ LIỆU
 
 #define MAX_WORDS 20
 
@@ -152,12 +152,7 @@ int main (void)
     char *file_open = "data.txt";
 
     if ((fp = fopen(file_open, "r")) == NULL) printf("Cannot open!\n");
-    data_t student[NUM_STD] = {{"001", "sv1", 3},
-                        {"002", "sv2", 5},
-                        {"003", "sv3", 7},
-                        {"004", "sv4", 10},
-                        {"005", "sv5", 11}};
-    // tao root (head) = null
+
     root_t lst = llInit();
 
     int choice = 0;
@@ -184,9 +179,10 @@ int main (void)
             break;
         }
     }   while (choice != OPTIONS);
-    // for(int i=0; i<sizeof(student)/sizeof(student[0]); i++)
-    //     lst = llInsertHead(lst, student[i]);
-    // llPrint(lst);
+
+    for(int i=0; i<sizeof(student)/sizeof(student[0]); i++)
+        lst = llInsertHead(lst, student[i]);
+    llPrint(lst);
 
 
     // giai phong bo nho khi ket thuc chuong trinh

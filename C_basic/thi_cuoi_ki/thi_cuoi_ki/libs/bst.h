@@ -4,13 +4,13 @@
 // --- Declaration ------------------------------------------------------------
 #include "data_t.h"
 
-typedef struct node_s {
+typedef struct node_bst_s {
   data_t data;
-  struct node_s *left;
-  struct node_s *right;
-} node_t;
+  struct node_bst_s *left;
+  struct node_bst_s *right;
+} node_bst_t;
 
-typedef node_t *tree_t;
+typedef node_bst_t *tree_t;
 
 // --- BST --------------------------------------------------------------------
 
