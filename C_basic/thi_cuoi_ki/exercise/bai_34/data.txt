@@ -1,0 +1,7 @@
+i	toi
+house	ngoi nha
+school	truong hoc
+cat	con meo
+dog	con cho
+go	di
+to	den
